@@ -1,9 +1,9 @@
+import { IUser } from '@/schema';
 import { create } from 'zustand';
-import { type TUser } from '@/lib/types';
 
 type AuthStore = {
-  user: TUser | null;
-  setUser: (user: TUser | null) => void;
+  user: IUser | null;
+  setUser: (user: IUser | null) => void;
 };
 
 const useAuthStore = create<AuthStore>((set) => ({

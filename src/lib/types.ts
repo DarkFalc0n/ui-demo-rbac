@@ -14,9 +14,3 @@ interface PageProps {
   searchParams: { [key: string]: string | string[] | undefined };
 }
 export type TPage = FC<Partial<PageProps>>;
-
-export type TUser = {
-  id: string;
-  name: string;
-  email: string;
-};
