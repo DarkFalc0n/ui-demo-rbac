@@ -27,14 +27,14 @@ export const users: IUser[] = [
     email: 'mike@localhost',
     username: 'mike',
     avatar: 'https://api.dicebear.com/9.x/big-ears/svg?scale=200&seed=mike',
-    roles: [2, 7]
+    roles: [2]
   },
   {
     id: 5,
     email: 'lucy@localhost',
     username: 'lucy',
     avatar: 'https://api.dicebear.com/9.x/big-ears/svg?scale=200&seed=lucy',
-    roles: [8]
+    roles: [6]
   },
   {
     id: 6,
@@ -48,7 +48,7 @@ export const users: IUser[] = [
     email: 'emily@localhost',
     username: 'emily',
     avatar: 'https://api.dicebear.com/9.x/big-ears/svg?scale=200&seed=emily',
-    roles: [5, 9]
+    roles: [5]
   },
   {
     id: 8,
@@ -62,14 +62,14 @@ export const users: IUser[] = [
     email: 'olivia@localhost',
     username: 'olivia',
     avatar: 'https://api.dicebear.com/9.x/big-ears/svg?scale=200&seed=olivia',
-    roles: [4, 8]
+    roles: [4, 6]
   },
   {
     id: 10,
     email: 'chris@localhost',
     username: 'chris',
     avatar: 'https://api.dicebear.com/9.x/big-ears/svg?scale=200&seed=chris',
-    roles: [7]
+    roles: [2]
   },
   {
     id: 11,
