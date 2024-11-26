@@ -5,7 +5,6 @@ export const roleColors = [
   '#FFF5C7',
   '#D3E8FF',
   '#F9D1D3',
-  '#E4D8F7',
   '#E3F9F2',
   '#F8E6D1',
   '#F2D6E2'

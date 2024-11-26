@@ -8,7 +8,9 @@ export default function SideNavLayout({
   return (
     <div className="flex h-full gap-4">
       <SideNav />
-      <div className="overflow-y-auto rounded-xl">{children}</div>
+      <div className="h-full overflow-y-auto rounded-xl bg-zinc-100 shadow-xl">
+        {children}
+      </div>
     </div>
   );
 }

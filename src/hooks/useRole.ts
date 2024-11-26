@@ -1,7 +1,7 @@
 import { IRole } from '@/schema';
 import { useRoleStore } from '@/store';
 
-export const useRoles = () => {
+export const useRole = () => {
   const { roles, setRoles } = useRoleStore();
 
   const getRoleById = (roleId: number) => roles.find((r) => r.id === roleId);
