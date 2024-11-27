@@ -65,6 +65,8 @@ The following should be the bridge tables, which follow the same one to many rel
 |          |      |
 
 ```
+![image](https://github.com/user-attachments/assets/935a6467-13da-42b6-a718-6bbc3b56e02b)
+
 
 
 ## Technological Choices
