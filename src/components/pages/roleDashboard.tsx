@@ -43,7 +43,7 @@ const RoleDashboard = () => {
             </DialogTrigger>
             <DialogContent className="max-h-[600px] overflow-y-auto bg-zinc-100 text-zinc-800 sm:max-w-[425px]">
               <DialogHeader>
-                <DialogTitle>Add User</DialogTitle>
+                <DialogTitle>Add Role</DialogTitle>
               </DialogHeader>
               <RoleForm onSubmit={onAddRole} />
             </DialogContent>
