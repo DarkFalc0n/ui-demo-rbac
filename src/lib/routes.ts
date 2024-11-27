@@ -1,9 +1,5 @@
-import { Users, User, Award } from 'lucide-react';
-import {
-  UserDashboard,
-  RoleDashboard,
-  GroupDashboard
-} from '@/components/pages';
+import { User, Award } from 'lucide-react';
+import { UserDashboard, RoleDashboard } from '@/components/pages';
 
 export const sideNavRoutes = [
   {
@@ -16,9 +12,4 @@ export const sideNavRoutes = [
     icon: Award,
     component: RoleDashboard
   }
-  // {
-  //   name: 'Groups',
-  //   icon: Users,
-  //   component: GroupDashboard
-  // }
 ];

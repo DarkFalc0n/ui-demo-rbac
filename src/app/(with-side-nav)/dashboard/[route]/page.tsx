@@ -1,7 +1,7 @@
 import {
   UserDashboard,
-  RoleDashboard,
-  GroupDashboard
+  RoleDashboard
+  // GroupDashboard
 } from '@/components/pages';
 
 const UserPage = async ({ params }: { params: Promise<{ route: string }> }) => {
