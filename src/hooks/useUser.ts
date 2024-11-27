@@ -1,10 +1,8 @@
 import { useUserStore } from '@/store';
 import { IUser } from '@/schema';
-import { useRole } from './useRole';
 
 export const useUser = () => {
   const { users, setUsers } = useUserStore();
-  const { getRoleById } = useRole();
   const getUserById = (userId: number) => users.find((u) => u.id === userId);
   const getAllUsers = () => users;
   const getUserByUsername = (username: string) =>

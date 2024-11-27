@@ -1,5 +1,5 @@
 'use client';
-import { editUserSchema, IUser } from '@/schema';
+import { IUser } from '@/schema';
 import RoleBadge from '../atoms/roleBadge';
 import { useRole, useUser } from '@/hooks';
 import { Pencil, Trash } from 'lucide-react';
@@ -12,22 +12,12 @@ import {
 } from '../ui/dialog';
 
 import { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
 import UserForm from './forms/userForm';
 
 const UserDetails = (user: IUser) => {
   const { getRoleById } = useRole();
   const { removeUser, removeUserRole, modifyUser } = useUser();
   const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
-
-  const form = useForm<z.infer<typeof editUserSchema>>({
-    resolver: zodResolver(editUserSchema),
-    defaultValues: {
-      ...user
-    }
-  });
 
   const onEdit = (data: Partial<IUser>) => {
     modifyUser(user.id, { ...user, ...data });
@@ -67,7 +57,9 @@ const UserDetails = (user: IUser) => {
         }) ?? 'No Role'}
       </td>
       <td className="text-zinc-600">
-        {user.groups?.length! > 0 ? user.groups : 'No groups'}
+        {user.groups?.length && user.groups?.length > 0
+          ? user.groups
+          : 'No groups'}
       </td>
       <td>
         <div className="flex gap-6">

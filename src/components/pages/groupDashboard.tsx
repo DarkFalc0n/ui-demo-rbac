@@ -7,7 +7,7 @@ import { Plus } from 'lucide-react';
 
 const GroupDashboard = () => {
   const { getAllRoles } = useRole();
-  let roles = getAllRoles();
+  const roles = getAllRoles();
   return (
     <div className="flex flex-col">
       <div className="flex flex-col justify-center">

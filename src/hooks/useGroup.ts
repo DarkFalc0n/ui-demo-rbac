@@ -1,7 +1,7 @@
 import { useGroupStore } from '@/store';
 import { IGroup } from '@/schema';
 
-export const useGroup = (groupId: number) => {
+export const useGroup = () => {
   const { groups, setGroups } = useGroupStore();
 
   const getGroupById = (groupId: number) =>

@@ -16,7 +16,7 @@ import { IUser } from '@/schema';
 
 const UserDashboard = () => {
   const { addUser, getAllUsers } = useUser();
-  let users = getAllUsers();
+  const users = getAllUsers();
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const onAddUser = (data: IUser) => {

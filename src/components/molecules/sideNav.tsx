@@ -9,7 +9,6 @@ import {
 import { sideNavRoutes as navRoutes } from '@/lib/routes';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
-import { useAuth } from '@/hooks';
 
 const SideNav = () => {
   const pathname = usePathname();

@@ -1,13 +1,13 @@
 'use client';
 import React from 'react';
-import { useRole, useUser } from '@/hooks';
+import { useRole } from '@/hooks';
 import RoleDetails from '../molecules/roleDetails';
 import { Button } from '../ui/button';
 import { Plus } from 'lucide-react';
 
 const RoleDashboard = () => {
   const { getAllRoles } = useRole();
-  let roles = getAllRoles();
+  const roles = getAllRoles();
   return (
     <div className="flex flex-col">
       <div className="flex flex-col justify-center">

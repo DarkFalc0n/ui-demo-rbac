@@ -2,18 +2,11 @@
 'use client';
 import * as React from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
-import {
-  CheckIcon,
-  XCircle,
-  ChevronDown,
-  XIcon,
-  WandSparkles
-} from 'lucide-react';
+import { CheckIcon, ChevronDown, XIcon, WandSparkles } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
 import { Separator } from '@/components/ui/separator';
 import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
 import {
   Popover,
   PopoverContent,
