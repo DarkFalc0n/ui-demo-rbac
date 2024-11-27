@@ -2,7 +2,7 @@
 
 ## How to run
 
-You can find the live link hosted here: [https://ui-demo-rbac.vercel.app](https://ui-demo-rbac.vercel.app/dashboard/users)
+Hosted live link: [https://ui-demo-rbac.vercel.app](https://ui-demo-rbac.vercel.app/dashboard/users)
 
 To set up the project locally, run the following commands.
 ```
@@ -68,3 +68,33 @@ The following should be the bridge tables, which follow the same one to many rel
 
 
 ## Technological Choices
+This project uses Nextjs as the Frontend Framework.
+### UI 
+- `TailwindCSS` for responsive design.
+- `Shadcn UI` elements.
+### State Management
+- `Zustand` has been used as a state management library.
+- Hooks such as these have been used to mimic backend access:
+```ts
+export const useRole = () => {
+  const { roles, setRoles } = useRoleStore();
+
+  const getRoleById = (roleId: number) => roles.find((r) => r.id === roleId);
+
+  const getAllRoles = () => roles;
+
+  const addRole = (role: IRole) => setRoles([...roles, role]);
+
+  const modifyRole = (roleId: number, role: IRole) => {
+    const index = roles.findIndex((r) => r.id === roleId);
+    if (index === -1) return;
+    roles[index] = role;
+    setRoles([...roles]);
+  };
+
+  const deleteRole = (roleId: number) =>
+    setRoles(roles.filter((r) => r.id !== roleId));
+
+  return { getRoleById, getAllRoles, addRole, modifyRole, deleteRole };
+};
+```
