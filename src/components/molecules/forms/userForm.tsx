@@ -95,7 +95,6 @@ const UserForm = ({
                     };
                   })}
                   onValueChange={(value) => {
-                    console.log(value);
                     const numericValue = value.map((v) => parseInt(v));
                     field.onChange(numericValue);
                   }}

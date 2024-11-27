@@ -17,8 +17,19 @@ export const useRole = () => {
     setRoles([...roles]);
   };
 
+  const generateId = (): number => {
+    const num = Math.floor(Math.random() * 100000);
+    return roles.find((u) => u.id === num) ? generateId() : num;
+  };
   const deleteRole = (roleId: number) =>
     setRoles(roles.filter((r) => r.id !== roleId));
 
-  return { getRoleById, getAllRoles, addRole, modifyRole, deleteRole };
+  return {
+    getRoleById,
+    getAllRoles,
+    generateId,
+    addRole,
+    modifyRole,
+    deleteRole
+  };
 };

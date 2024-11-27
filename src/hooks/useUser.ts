@@ -48,7 +48,7 @@ export const useUser = () => {
     );
 
   const generateId = (): number => {
-    const num = Math.random() * 100000;
+    const num = Math.floor(Math.random() * 100000);
     return users.find((u) => u.id === num) ? generateId() : num;
   };
 

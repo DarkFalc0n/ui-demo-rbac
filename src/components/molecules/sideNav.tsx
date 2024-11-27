@@ -13,8 +13,6 @@ import { cn } from '@/lib/utils';
 const SideNav = () => {
   const pathname = usePathname();
   const currentRoute = pathname.split('/')[2];
-
-  console.log(currentRoute);
   return (
     <div className="flex flex-row-reverse gap-4 rounded-xl bg-zinc-100 p-4 shadow-xl md:h-full md:flex-col">
       {navRoutes.map((route, index) => (
