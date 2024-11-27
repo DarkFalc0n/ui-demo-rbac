@@ -41,7 +41,7 @@ const UserDetails = (user: IUser) => {
           </div>
         </div>
       </td>
-      <td>
+      <td className="hidden md:table-cell">
         {user.roles?.map((role, index) => {
           const userRole = getRoleById(role);
           return !!userRole ? (
@@ -56,7 +56,7 @@ const UserDetails = (user: IUser) => {
           ) : null;
         }) ?? 'No Role'}
       </td>
-      <td className="text-zinc-600">
+      <td className="hidden text-zinc-600 md:table-cell">
         {user.groups?.length && user.groups?.length > 0
           ? user.groups
           : 'No groups'}
@@ -72,7 +72,7 @@ const UserDetails = (user: IUser) => {
             <DialogTrigger asChild>
               <button className="flex gap-1 text-base text-zinc-400 transition-all hover:text-sky-500">
                 <Pencil size={20} />
-                Edit User
+                <div className="hidden md:block">Edit User</div>
               </button>
             </DialogTrigger>
             <DialogContent className="bg-zinc-100 text-zinc-800 sm:max-w-[425px]">
@@ -87,7 +87,9 @@ const UserDetails = (user: IUser) => {
             className="flex gap-1 text-base text-zinc-400 transition-all hover:text-red-500"
           >
             <Trash size={24} className="-translate-y-0.5" />
-            <div className="flex h-full flex-col justify-center">Delete</div>
+            <div className="flex hidden h-full flex-col justify-center md:block">
+              Delete
+            </div>
           </button>
         </div>
       </td>

@@ -24,7 +24,7 @@ const RoleDashboard = () => {
           </Button>
         </div>
       </div>
-      <table className="mt-8 w-full table-fixed">
+      <table className="mt-8 w-full table-auto md:table-fixed">
         <thead className="h-16 border-y-2">
           <tr>
             <th className="text-left font-semibold">Role</th>

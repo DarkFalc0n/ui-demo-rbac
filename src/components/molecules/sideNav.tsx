@@ -16,7 +16,7 @@ const SideNav = () => {
 
   console.log(currentRoute);
   return (
-    <div className="flex h-full flex-col gap-4 rounded-xl bg-zinc-100 p-4 shadow-xl">
+    <div className="flex flex-row-reverse gap-4 rounded-xl bg-zinc-100 p-4 shadow-xl md:h-full md:flex-col">
       {navRoutes.map((route, index) => (
         <Link href={`/dashboard/${route.name.toLowerCase()}`} key={index}>
           <TooltipProvider>
@@ -43,7 +43,7 @@ const SideNav = () => {
       <img
         src={'https://api.dicebear.com/9.x/big-ears/svg?scale=200&seed=admin'}
         alt="Av"
-        className="mt-auto size-12 self-center rounded-full"
+        className="mr-auto size-12 rounded-full md:mt-auto md:self-center"
       />
     </div>
   );

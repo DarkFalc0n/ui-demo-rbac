@@ -10,7 +10,7 @@ const UserPage = async ({ params }: { params: Promise<{ route: string }> }) => {
     <div className="w-full rounded-xl p-7">
       {slug === 'users' && <UserDashboard />}
       {slug === 'roles' && <RoleDashboard />}
-      {slug === 'groups' && <GroupDashboard />}
+      {/* {slug === 'groups' && <GroupDashboard />} */}
     </div>
   );
 };
