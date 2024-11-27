@@ -7,11 +7,13 @@ import { useState } from 'react';
 const RoleBadge = ({
   role,
   deleteRole,
-  showDeleteButton = false
+  showDeleteButton = false,
+  className
 }: {
   role: IRole;
   deleteRole?: () => void;
   showDeleteButton?: boolean;
+  className?: string;
 }) => {
   const [isHovering, setIsHovering] = useState(false);
   return (
@@ -20,7 +22,8 @@ const RoleBadge = ({
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
       className={cn(
-        `relative mr-2 inline-flex max-h-8 w-auto justify-start gap-2 rounded-full px-4 py-1 font-medium`
+        className,
+        `relative mr-2 inline-flex max-h-8 w-auto justify-start gap-2 rounded-full px-4 py-1 font-medium text-zinc-800`
       )}
     >
       {role.name}

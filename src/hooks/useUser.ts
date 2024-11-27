@@ -49,6 +49,11 @@ export const useUser = () => {
       })
     );
 
+  const generateId = (): number => {
+    const num = Math.random() * 100000;
+    return users.find((u) => u.id === num) ? generateId() : num;
+  };
+
   const filterUser = (filterBy: 'ROLE' | 'SEARCH', payload: string) => {
     if (filterBy === 'ROLE') {
       setUsers(users.filter((u) => u.roles?.includes(parseInt(payload))));
@@ -64,6 +69,7 @@ export const useUser = () => {
     getAllUsers,
     getUserById,
     getUserByUsername,
+    generateId,
     addUser,
     addUserRole,
     removeUserRole,

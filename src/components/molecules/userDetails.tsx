@@ -1,36 +1,43 @@
 'use client';
-import { IUser } from '@/schema';
+import { editUserSchema, IUser } from '@/schema';
 import RoleBadge from '../atoms/roleBadge';
 import { useRole, useUser } from '@/hooks';
 import { Pencil, Trash } from 'lucide-react';
 import {
   Dialog,
   DialogContent,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger
 } from '../ui/dialog';
-import { Label } from '../ui/label';
-import { Input } from '../ui/input';
-import { Button } from '../ui/button';
+
 import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
+import UserForm from './forms/userForm';
 
 const UserDetails = (user: IUser) => {
   const { getRoleById } = useRole();
   const { removeUser, removeUserRole, modifyUser } = useUser();
   const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
-  const [editedUsername, setEditedUsername] = useState(user.username);
-  const [isEditVisible, setIsEditVisible] = useState(false);
+
+  const form = useForm<z.infer<typeof editUserSchema>>({
+    resolver: zodResolver(editUserSchema),
+    defaultValues: {
+      ...user
+    }
+  });
+
+  const onEdit = (data: Partial<IUser>) => {
+    modifyUser(user.id, { ...user, ...data });
+    setIsEditDialogOpen(false);
+  };
 
   return (
     <tr className="h-20 justify-center">
       <td>
-        <div
-          className="flex gap-4"
-          onMouseEnter={() => setIsEditVisible(true)}
-          onMouseLeave={() => setIsEditVisible(false)}
-        >
+        <div className="flex gap-4">
           <img
             src={user.avatar}
             alt="avatar"
@@ -39,60 +46,6 @@ const UserDetails = (user: IUser) => {
           <div className="flex flex-col justify-center">
             <div className="flex gap-3 font-medium">
               {user.username.toLocaleUpperCase()}
-              <Dialog
-                open={isEditDialogOpen}
-                onOpenChange={(e) => {
-                  setIsEditVisible(false);
-                  setIsEditDialogOpen(e);
-                }}
-              >
-                <DialogTrigger
-                  asChild
-                  className={isEditVisible ? 'block' : 'hidden'}
-                >
-                  <button className="flex gap-1 text-base text-zinc-400 transition-all hover:text-sky-500">
-                    <Pencil size={20} />
-                  </button>
-                </DialogTrigger>
-                <DialogContent className="bg-zinc-100 text-zinc-800 sm:max-w-[425px]">
-                  <DialogHeader>
-                    <DialogTitle>Edit Username</DialogTitle>
-                  </DialogHeader>
-                  <form
-                    onSubmit={(e) => {
-                      e.preventDefault();
-                      modifyUser(user.id, {
-                        ...user,
-                        username: editedUsername
-                      });
-                      setIsEditDialogOpen(false);
-                    }}
-                  >
-                    <div className="grid gap-4 py-4">
-                      <div className="grid grid-cols-4 items-center gap-4">
-                        <Label htmlFor="username" className="text-right">
-                          Username
-                        </Label>
-                        <Input
-                          id="username"
-                          defaultValue={user.username}
-                          value={editedUsername}
-                          onChange={(e) => setEditedUsername(e.target.value)}
-                          className="col-span-3"
-                        />
-                      </div>
-                    </div>
-                    <DialogFooter>
-                      <Button
-                        type="submit"
-                        className="rounded-lg bg-sky-500 text-lg hover:bg-sky-600"
-                      >
-                        Save changes
-                      </Button>
-                    </DialogFooter>
-                  </form>
-                </DialogContent>
-              </Dialog>
             </div>
             <div className="text-sm text-zinc-500">{user.email}</div>
           </div>
@@ -105,10 +58,10 @@ const UserDetails = (user: IUser) => {
             <RoleBadge
               key={index}
               role={userRole}
+              className="mb-2"
               deleteRole={() => {
                 removeUserRole(user.id, role);
               }}
-              showDeleteButton
             />
           ) : null;
         }) ?? 'No Role'}
@@ -118,6 +71,25 @@ const UserDetails = (user: IUser) => {
       </td>
       <td>
         <div className="flex gap-6">
+          <Dialog
+            open={isEditDialogOpen}
+            onOpenChange={(e) => {
+              setIsEditDialogOpen(e);
+            }}
+          >
+            <DialogTrigger asChild>
+              <button className="flex gap-1 text-base text-zinc-400 transition-all hover:text-sky-500">
+                <Pencil size={20} />
+                Edit User
+              </button>
+            </DialogTrigger>
+            <DialogContent className="bg-zinc-100 text-zinc-800 sm:max-w-[425px]">
+              <DialogHeader>
+                <DialogTitle>Edit User</DialogTitle>
+              </DialogHeader>
+              <UserForm onSubmit={onEdit} defaultValue={user} />
+            </DialogContent>
+          </Dialog>
           <button
             onClick={() => removeUser(user.id)}
             className="flex gap-1 text-base text-zinc-400 transition-all hover:text-red-500"
