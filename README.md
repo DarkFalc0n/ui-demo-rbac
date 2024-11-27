@@ -45,7 +45,7 @@ group schema
 |          |            |            |
 ```
 
-The following should be the bridge tables, which follow the same one to many relationship.
+The following should be the bridge tables, which follow similar `one-to-many relationship`.
 
 ```
 | u_id | role_id |   
@@ -100,3 +100,25 @@ export const useRole = () => {
   return { getRoleById, getAllRoles, addRole, modifyRole, deleteRole };
 };
 ```
+
+### Validation
+- `Zod` has been used to validate schema and input data, to prevent invalid inputs and keep the client side safe.
+  
+Most schema files can be found [here](https://github.com/DarkFalc0n/ui-demo-rbac/tree/main/src/schema).
+
+### Design Principles
+
+- Atomic design: The UI components have been split into folders according to their complexity and hierarchy.
+
+```
+components
+│   ├── atoms
+│   ├── molecules
+│   │   ├── forms
+│   │   
+│   │  
+│   ├── pages
+ ```
+- Reusability: The components have been designed while keeping in mind the reusablity in different scenarios, and hence, have appropriate extensibility through props.
+
+
