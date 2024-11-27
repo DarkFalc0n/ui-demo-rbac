@@ -4,20 +4,13 @@ import RoleBadge from '../atoms/roleBadge';
 import { Pencil, Trash } from 'lucide-react';
 import { useRole } from '@/hooks';
 import { useState } from 'react';
-import { permissions } from '@/static';
 import {
   Dialog,
   DialogContent,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger
 } from '../ui/dialog';
-import { Label } from '../ui/label';
-import { Input } from '../ui/input';
-import { Button } from '../ui/button';
-import { roleColors as colors } from '@/lib/roleColors';
-import { Switch } from '../ui/switch';
 import RoleForm from './forms/roleForm';
 
 const RoleDetails = (role: IRole) => {
