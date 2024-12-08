@@ -122,6 +122,7 @@ components
 - Reusability: The components have been designed while keeping in mind the reusablity in different scenarios, and hence, have appropriate extensibility through props.
   
 For example, the following form component designed for adding new Roles can be tweaked a little and used to edit existing roles:
+
 <img src="https://github.com/user-attachments/assets/67492acc-ab07-4865-8554-51e4225eb779" height=400px >
 
 
